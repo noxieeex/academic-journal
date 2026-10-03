@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=DM+Sans:wght@400;500;600&family=Fauna+One&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../../../style.css" />
+
+    <title>main.c | Hebbian Learning</title>
+  </head>
+
+  <body>
+    <main class="journal source-page">
+      <!-- ========================================
+             BACK
+        ========================================= -->
+
+      <a href="index.html" class="back-link"> ← Paper 02 </a>
+
+      <!-- ========================================
+             HEADER
+        ========================================= -->
+
+      <header class="source-page-header">
+        <span class="small-title"> SOURCE CODE · PAPER 02 </span>
+
+        <h1>main<span class="highlight">.c</span></h1>
+
+        <p class="subtitle">Hebbian Learning · Boolean Functions</p>
+
+        <p class="little-note">the tiny neuron in question ♡</p>
+      </header>
+
+      <!-- ========================================
+             ABOUT
+        ========================================= -->
+
+      <section class="source-about">
+        <span class="section-number"> ABOUT </span>
+
+        <h2>Implementation</h2>
+
+        <p>
+          This program applies Hebb's Rule to all 16 Boolean functions of two
+          variables using bipolar representation. For each function, it
+          calculates the resulting weights and tests the neuron against all four
+          possible input combinations.
+        </p>
+      </section>
+
+      <!-- ========================================
+             CODE
+        ========================================= -->
+
+      <section class="full-code-section">
+        <div class="full-code-header">
+          <div class="code-file-name">
+            <span class="code-file-dot"></span>
+
+            <span> main.c </span>
+          </div>
+
+          <span class="code-language"> C </span>
+        </div>
+
+        <div class="full-code">
+          <pre><code><span class="c-preprocessor">#include &lt;stdio.h&gt;</span>
+
+<span class="c-comment">// Função de ativação</span>
+<span class="c-type">int</span> ativacao(<span class="c-type">int</span> soma) {
+    <span class="c-keyword">if</span> (soma &gt;= 0)
+        <span class="c-keyword">return</span> 1;
+    <span class="c-keyword">else</span>
+        <span class="c-keyword">return</span> -1;
+}
+
+<span class="c-type">int</span> main() {
+
+    <span class="c-comment">// Combinações das entradas em representação bipolar</span>
+    <span class="c-type">int</span> x1[4] = {-1, -1, 1, 1};
+    <span class="c-type">int</span> x2[4] = {-1, 1, -1, 1};
+
+    <span class="c-comment">// As 16 funções lógicas possíveis</span>
+    <span class="c-type">int</span> funcoes[16][4] = {
+        {-1, -1, -1, -1},
+        {-1, -1, -1,  1},
+        {-1, -1,  1, -1},
+        {-1, -1,  1,  1},
+        {-1,  1, -1, -1},
+        {-1,  1, -1,  1},
+        {-1,  1,  1, -1},
+        {-1,  1,  1,  1},
+        { 1, -1, -1, -1},
+        { 1, -1, -1,  1},
+        { 1, -1,  1, -1},
+        { 1, -1,  1,  1},
+        { 1,  1, -1, -1},
+        { 1,  1, -1,  1},
+        { 1,  1,  1, -1},
+        { 1,  1,  1,  1}
+    };
+
+    <span class="c-comment">// Nome de cada função lógica</span>
+    <span class="c-type">char</span> *nomes[16] = {
+        <span class="c-string">"FALSE"</span>,
+        <span class="c-string">"AND"</span>,
+        <span class="c-string">"A AND NOT B"</span>,
+        <span class="c-string">"A"</span>,
+        <span class="c-string">"NOT A AND B"</span>,
+        <span class="c-string">"B"</span>,
+        <span class="c-string">"XOR"</span>,
+        <span class="c-string">"OR"</span>,
+        <span class="c-string">"NOR"</span>,
+        <span class="c-string">"XNOR"</span>,
+        <span class="c-string">"NOT B"</span>,
+        <span class="c-string">"A OR NOT B"</span>,
+        <span class="c-string">"NOT A"</span>,
+        <span class="c-string">"NOT A OR B"</span>,
+        <span class="c-string">"NAND"</span>,
+        <span class="c-string">"TRUE"</span>
+    };
+
+    <span class="c-comment">// Testar as 16 funções</span>
+    <span class="c-keyword">for</span> (<span class="c-type">int</span> f = 0; f &lt; 16; f++) {
+
+        <span class="c-type">int</span> w0 = 0;
+        <span class="c-type">int</span> w1 = 0;
+        <span class="c-type">int</span> w2 = 0;
+
+        <span class="c-type">int</span> saida[4];
+
+        <span class="c-comment">// Aplicação da Regra de Hebb</span>
+        <span class="c-keyword">for</span> (<span class="c-type">int</span> i = 0; i &lt; 4; i++) {
+
+            saida[i] = funcoes[f][i];
+
+            w0 = w0 + saida[i];
+            w1 = w1 + x1[i] * saida[i];
+            w2 = w2 + x2[i] * saida[i];
+        }
+
+        printf(<span class="c-string">"\nFuncao %d - %s:\n"</span>, f, nomes[f]);
+
+        printf(<span class="c-string">"w0 = %d | w1 = %d | w2 = %d\n"</span>,
+               w0, w1, w2);
+
+        <span class="c-comment">// Testar se os pesos encontrados reproduzem a funcao</span>
+        <span class="c-type">int</span> acertos = 0;
+
+        <span class="c-keyword">for</span> (<span class="c-type">int</span> i = 0; i &lt; 4; i++) {
+
+            <span class="c-type">int</span> soma = w0 + w1 * x1[i] + w2 * x2[i];
+
+            <span class="c-type">int</span> resultado = ativacao(soma);
+
+            printf(<span class="c-string">"Entrada: (%d, %d) | Esperada: %d | Obtida: %d\n"</span>,
+                   x1[i], x2[i], saida[i], resultado);
+
+            <span class="c-keyword">if</span> (resultado == saida[i]) {
+                acertos++;
+            }
+        }
+
+        printf(<span class="c-string">"Acertos: %d de 4\n"</span>, acertos);
+    }
+
+    <span class="c-keyword">return</span> 0;
+}</code></pre>
+        </div>
+      </section>
+
+      <!-- ========================================
+             ORIGINAL FILE
+        ========================================= -->
+
+      <section class="original-code-file">
+        <div>
+          <span class="source-label"> ORIGINAL FILE </span>
+
+          <h2>Want the actual source?</h2>
+
+          <p>Open the original C file used in the experiment.</p>
+        </div>
+
+        <a
+          href="../../../assets/code/machine%20learning/hebbian%20learning/main.c"
+          class="source-button"
+          target="_blank"
+        >
+          Original .c ↗
+        </a>
+      </section>
+
+      <!-- ========================================
+             FOOTER
+        ========================================= -->
+
+      <footer class="paper-footer">
+        <div class="paper-footer-info">
+          <span> GEOVANA'S ACADEMIC JOURNAL </span>
+
+          <span> COMPUTER ENGINEERING · 2026 </span>
+        </div>
+
+        <div class="paper-footer-mark">SOURCE · PAPER 02 ♡</div>
+      </footer>
+    </main>
+  </body>
+</html>

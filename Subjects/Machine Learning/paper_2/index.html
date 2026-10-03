@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=DM+Sans:wght@400;500;600&family=Fauna+One&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Main Stylesheet -->
+
+    <link rel="stylesheet" href="../../../style.css" />
+
+    <title>Hebbian Learning | Academic Journal</title>
+  </head>
+
+  <body>
+    <main class="journal">
+      <!-- ========================================
+             BACK TO SUBJECT
+        ========================================= -->
+
+      <a href="../../../subject.html?id=machine-learning" class="back-link">
+        ← Machine Learning
+      </a>
+
+      <!-- ========================================
+             PAPER HEADER
+        ========================================= -->
+
+      <header class="paper-header">
+        <span class="small-title"> PAPER 02 </span>
+
+        <span class="header-doodle" aria-hidden="true"> ✦ </span>
+
+        <h1>
+          Hebbian
+          <span class="highlight"> Learning </span>
+        </h1>
+
+        <p class="subtitle">Application of Hebb's Rule · Boolean Functions</p>
+
+        <p class="little-note">
+          one tiny neuron against sixteen logic functions ♡
+        </p>
+      </header>
+
+      <!-- ========================================
+             01 — OBJECTIVE
+        ========================================= -->
+
+      <section class="paper-section">
+        <span class="section-number"> 01 </span>
+
+        <h2>Objective</h2>
+
+        <p>
+          The objective of this experiment is to consider the 16 Boolean
+          functions that can be constructed from two variables and verify which
+          of them can be represented by a neural network using Hebbian learning.
+        </p>
+
+        <p>
+          Using bipolar representation, Hebb's Rule is applied to each function
+          in order to determine the corresponding weights and evaluate whether
+          the resulting neuron can correctly reproduce its expected outputs.
+        </p>
+      </section>
+
+      <!-- ========================================
+             02 — BIPOLAR REPRESENTATION
+        ========================================= -->
+
+      <section class="paper-section">
+        <span class="section-number"> 02 </span>
+
+        <h2>Bipolar Representation</h2>
+
+        <p>
+          Instead of representing logical values as 0 and 1, the experiment uses
+          bipolar values:
+        </p>
+
+        <div class="bipolar-grid">
+          <div class="bipolar-card">
+            <span> FALSE </span>
+
+            <strong> -1 </strong>
+          </div>
+
+          <div class="bipolar-card">
+            <span> TRUE </span>
+
+            <strong> +1 </strong>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================
+             03 — HEBB'S RULE
+        ========================================= -->
+
+      <section class="paper-section">
+        <span class="section-number"> 03 </span>
+
+        <h2>Hebb's Rule</h2>
+
+        <p>
+          For each input pattern, the neuron updates its weights according to
+          the input values and the expected output.
+        </p>
+
+        <div class="formula-card">
+          <span class="formula-label"> WEIGHT UPDATE </span>
+
+          <p>w₀ = w₀ + y</p>
+
+          <p>w₁ = w₁ + x₁y</p>
+
+          <p>w₂ = w₂ + x₂y</p>
+        </div>
+
+        <div class="mini-summary">
+          <span> IN SHORT </span>
+
+          <p>
+            Each training example contributes to the final weights. The input
+            values and expected output determine how each weight is updated.
+          </p>
+        </div>
+
+        <p class="little-note">see example → adjust weights → repeat</p>
+      </section>
+
+      <!-- ========================================
+             04 — IMPLEMENTATION
+        ========================================= -->
+
+      <section class="paper-section">
+        <span class="section-number"> 04 </span>
+
+        <h2>Implementation</h2>
+
+        <p>
+          The experiment was implemented in C. The program stores all 16
+          possible Boolean functions, applies Hebbian learning to each one,
+          calculates the resulting weights and then tests the neuron against all
+          four input combinations.
+        </p>
+
+        <div class="experiment-flow">
+          <span> 16 functions </span>
+
+          <span> → </span>
+
+          <span> Hebbian learning </span>
+
+          <span> → </span>
+
+          <span> weights </span>
+
+          <span> → </span>
+
+          <span> test </span>
+        </div>
+
+        <div class="mini-summary">
+          <span> AUTOMATED PROCESS </span>
+
+          <p>
+            The same training and testing process is automatically applied to
+            every Boolean function rather than calculating each function
+            manually.
+          </p>
+        </div>
+      </section>
+
+      <!-- ========================================
+     SOURCE CODE
+========================================= -->
+
+      <section class="source-section">
+        <span class="source-label"> SOURCE CODE </span>
+
+        <h2>Implementation in C</h2>
+
+        <p class="source-description">
+          The experiment was implemented in C, with the same Hebbian learning
+          process applied to each of the 16 Boolean functions.
+        </p>
+
+        <!-- Core Algorithm -->
+
+        <div class="code-preview">
+          <div class="code-header">
+            <span> main.c </span>
+
+            <span> C </span>
+          </div>
+
+          <pre><code><span class="code-comment">// Hebbian weight update</span>
+
+w0 += y;
+w1 += x1[i] * y;
+w2 += x2[i] * y;</code></pre>
+        </div>
+
+        <!-- Full Source File -->
+
+        <div class="source-file">
+          <div class="source-file-icon">C</div>
+
+          <div class="source-file-info">
+            <span> COMPLETE IMPLEMENTATION </span>
+
+            <h3>main.c</h3>
+
+            <p>
+              Training, weight calculation and testing for all 16 Boolean
+              functions.
+            </p>
+          </div>
+
+          <a href="source.html" class="source-button"> View source → </a>
+        </div>
+      </section>
+
+      <!-- ========================================
+             05 — RESULTS
+        ========================================= -->
+
+      <section class="paper-section">
+        <span class="section-number"> 05 </span>
+
+        <h2>Results</h2>
+
+        <p>
+          After training and testing all 16 Boolean functions, 14 were correctly
+          represented by the neuron.
+        </p>
+
+        <!-- Main Result -->
+
+        <div class="result-highlight">
+          <span class="result-number"> 14 / 16 </span>
+
+          <span class="result-text"> successfully represented </span>
+        </div>
+
+        <!-- Results Table -->
+
+        <div class="results-table-wrapper">
+          <table class="results-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Function</th>
+                <th>w₀</th>
+                <th>w₁</th>
+                <th>w₂</th>
+                <th>Accuracy</th>
+                <th>Result</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>00</td>
+                <td>FALSE</td>
+                <td>-4</td>
+                <td>0</td>
+                <td>0</td>
+                <td>4 / 4</td>
+                <td>
+                  <span class="status success"> LEARNED </span>
+                </td>
+              </tr>
+
+              <tr>
+                <td>01</td>
+                <td>AND</td>
+                <td>-2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>4 / 4</td>
+                <td>
+                  <span class="status success"> LEARNED </span>
+                </td>
+              </tr>
+
+              <tr>
+                <td>02</td>
+                <td>A AND NOT B</td>
+                <td>-2</td>
+                <td>2</td>
+                <td>-2</td>
+                <td>4 / 4</td>
+                <td>
+                  <span class="status success"> LEARNED </span>
+                </td>
+              </tr>
+
+              <tr>
+                <td>03</td>
+                <td>A</td>
+                <td>0</td>
+                <td>4</td>
+                <td>0</td>
+                <td>4 / 4</td>
+                <td>
+                  <span class="status success"> LEARNED </span>
+                </td>
+              </tr>
+
+              <tr>
+                <td>04</td>
+                <td>NOT A AND B</td>
+                <td>-2</td>
+                <td>-2</td>
+                <td>2</td>
+                <td>4 / 4</td>
+                <td>
+                  <span class="status success"> LEARNED </span>
+                </td>
+              </tr>
+
+              <tr>
+                <td>05</td>
+                <td>B</td>
+                <td>0</td>
+                <td>0</td>
+                <td>4</td>
+                <td>4 / 4</td>
+                <td>
+                  <span class="status success"> LEARNED </span>
+                </td>
+              </tr>
+
+              <tr class="failed-row">
+                <td>06</td>
+                <td>XOR</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>2 / 4</td>
+                <td>
+                  <span class="status failed"> FAILED </span>
+                </td>
+              </tr>
+
+              <tr>
+                <td>07</td>
+                <td>OR</td>
+                <td>2</td>
+                <td>2</td>
+                <td>2</td>
+                <td>4 / 4</td>
+                <td>
+                  <span class="status success"> LEARNED </span>
+                </td>
+              </tr>
+
+              <tr>
+                <td>08</td>
+                <td>NOR</td>
+                <td>-2</td>
+                <td>-2</td>
+                <td>-2</td>
+                <td>4 / 4</td>
+                <td>
+                  <span class="status success"> LEARNED </span>
+                </td>
+              </tr>
+
+              <tr class="failed-row">
+                <td>09</td>
+                <td>XNOR</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>2 / 4</td>
+                <td>
+                  <span class="status failed"> FAILED </span>
+                </td>
+              </tr>
+
+              <tr>
+                <td>10</td>
+                <td>NOT B</td>
+                <td>0</td>
+                <td>0</td>
+                <td>-4</td>
+                <td>4 / 4</td>
+                <td>
+                  <span class="status success"> LEARNED </span>
+                </td>
+              </tr>
+
+              <tr>
+                <td>11</td>
+                <td>A OR NOT B</td>
+                <td>2</td>
+                <td>2</td>
+                <td>-2</td>
+                <td>4 / 4</td>
+                <td>
+                  <span class="status success"> LEARNED </span>
+                </td>
+              </tr>
+
+              <tr>
+                <td>12</td>
+                <td>NOT A</td>
+                <td>0</td>
+                <td>-4</td>
+                <td>0</td>
+                <td>4 / 4</td>
+                <td>
+                  <span class="status success"> LEARNED </span>
+                </td>
+              </tr>
+
+              <tr>
+                <td>13</td>
+                <td>NOT A OR B</td>
+                <td>2</td>
+                <td>-2</td>
+                <td>2</td>
+                <td>4 / 4</td>
+                <td>
+                  <span class="status success"> LEARNED </span>
+                </td>
+              </tr>
+
+              <tr>
+                <td>14</td>
+                <td>NAND</td>
+                <td>2</td>
+                <td>-2</td>
+                <td>-2</td>
+                <td>4 / 4</td>
+                <td>
+                  <span class="status success"> LEARNED </span>
+                </td>
+              </tr>
+
+              <tr>
+                <td>15</td>
+                <td>TRUE</td>
+                <td>4</td>
+                <td>0</td>
+                <td>0</td>
+                <td>4 / 4</td>
+                <td>
+                  <span class="status success"> LEARNED </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Results Summary -->
+
+        <div class="mini-summary">
+          <span> WHAT HAPPENED? </span>
+
+          <p>
+            Fourteen functions reached 4/4 correct outputs. XOR and XNOR reached
+            only 2/4.
+          </p>
+        </div>
+
+        <p class="table-note">
+          14 well-behaved children and then there's XOR & XNOR
+        </p>
+      </section>
+
+      <!-- ========================================
+             06 — THE EXCEPTIONS
+        ========================================= -->
+
+      <section class="paper-section">
+        <span class="section-number"> 06 </span>
+
+        <h2>
+          The
+          <span class="highlight"> Exceptions </span>
+        </h2>
+
+        <p>
+          XOR and XNOR were the only functions that were not completely
+          represented by the neuron. Both obtained only two correct outputs out
+          of four.
+        </p>
+
+        <div class="exception-grid">
+          <!-- XOR -->
+
+          <article class="exception-card">
+            <span class="analysis-label"> FUNCTION 06 </span>
+
+            <h3>XOR</h3>
+
+            <p>Weights: w₀ = 0, w₁ = 0, w₂ = 0</p>
+
+            <p>Accuracy: 2 / 4</p>
+          </article>
+
+          <!-- XNOR -->
+
+          <article class="exception-card">
+            <span class="analysis-label"> FUNCTION 09 </span>
+
+            <h3>XNOR</h3>
+
+            <p>Weights: w₀ = 0, w₁ = 0, w₂ = 0</p>
+
+            <p>Accuracy: 2 / 4</p>
+          </article>
+        </div>
+
+        <div class="mini-summary">
+          <span> WHY? </span>
+
+          <p>
+            XOR and XNOR are not linearly separable. Their two output classes
+            cannot be separated using a single linear decision boundary.
+          </p>
+        </div>
+
+        <p class="little-note">
+          the neuron isn't stupid — we're asking one line to do the impossible ♡
+        </p>
+      </section>
+
+      <!-- ========================================
+             07 — CONCLUSION
+        ========================================= -->
+
+      <section class="paper-section conclusion">
+        <div class="conclusion-tape"></div>
+
+        <span class="section-number"> 07 </span>
+
+        <h2>Conclusion</h2>
+
+        <p>
+          The experiment demonstrates that Hebbian learning can determine
+          suitable weights for 14 of the 16 Boolean functions when bipolar
+          representation is used.
+        </p>
+
+        <p>
+          XOR and XNOR remain the two exceptions, showing a limitation of
+          representing these functions with this single-neuron model.
+        </p>
+
+        <div class="takeaway">
+          <span class="takeaway-label"> MAIN RESULT </span>
+
+          <p>
+            14 functions learned.
+            <span class="highlight"> 2 exceptions. </span>
+          </p>
+        </div>
+
+        <p class="final-note">tiny neuron did its best ♡</p>
+      </section>
+
+      <!-- ========================================
+             PAPER FOOTER
+        ========================================= -->
+
+      <footer class="paper-footer">
+        <div class="paper-footer-info">
+          <span> GEOVANA'S ACADEMIC JOURNAL </span>
+
+          <span> COMPUTER ENGINEERING · 2026 </span>
+        </div>
+
+        <div class="paper-footer-mark">PAPER 02 ♡</div>
+      </footer>
+    </main>
+  </body>
+</html>

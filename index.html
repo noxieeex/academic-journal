@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    />
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    />
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    />
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=DM+Sans:wght@400;500;600&family=Fauna+One&display=swap"
+        rel="stylesheet"
+    />
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    />
+
+    <title>Academic Journal</title>
+</head>
+
+
+<body>
+
+    <main class="journal">
+
+
+        <!-- ========================================
+             HEADER
+        ========================================= -->
+
+        <header class="journal-header">
+
+            <span class="small-title">
+                GEOVANA'S
+            </span>
+
+            <h1>
+                Academic Journal
+            </h1>
+
+            <p class="subtitle">
+                Computer Engineering · 2026
+            </p>
+
+            <p class="little-note">
+                learning one questionable decision at a time ♡
+            </p>
+
+        </header>
+
+
+
+        <!-- ========================================
+             SUBJECTS
+        ========================================= -->
+
+        <section class="subjects">
+
+            <div class="subjects-heading">
+
+                <h2>
+                    Subjects
+                </h2>
+
+                <button
+                    class="add-subject-button"
+                    id="add-subject"
+                    type="button"
+                >
+                    + Add Subject
+                </button>
+
+            </div>
+
+
+            <!--
+                The subject cards are generated
+                automatically by script.js
+            -->
+
+            <div id="subjects-list"></div>
+
+        </section>
+
+
+    </main>
+
+    <!-- ========================================
+     SUBJECT MODAL
+========================================= -->
+
+<div class="subject-modal" id="subject-modal">
+
+    <div class="subject-modal-backdrop"></div>
+
+    <div class="subject-modal-card">
+
+        <button
+            class="modal-close"
+            id="modal-close"
+            type="button"
+            aria-label="Close"
+        >
+            ×
+        </button>
+
+        <span class="small-title">
+            NEW SUBJECT
+        </span>
+
+        <h2>Add Subject</h2>
+
+        <form id="subject-form">
+
+            <div class="form-field">
+                <label for="subject-name">
+                    Subject name
+                </label>
+
+                <input
+                    type="text"
+                    id="subject-name"
+                    required
+                    autocomplete="off"
+                    placeholder="Computer Graphics"
+                />
+            </div>
+
+
+            <div class="form-field">
+                <label for="subject-description">
+                    Description
+                </label>
+
+                <input
+                    type="text"
+                    id="subject-description"
+                    required
+                    autocomplete="off"
+                    placeholder="Graphics, rendering & geometry"
+                />
+            </div>
+
+
+            <div class="form-field">
+                <label for="subject-note">
+                    Little note
+                    <span>optional</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="subject-note"
+                    autocomplete="off"
+                    placeholder="a tiny thought..."
+                />
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="modal-cancel"
+                    id="modal-cancel"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="modal-save"
+                >
+                    Add Subject
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- ========================================
+     SUBJECT CONFIRMATION MODAL
+========================================= -->
+
+<div
+    class="confirm-modal"
+    id="subject-confirm-modal"
+>
+
+    <div class="subject-confirm-modal-backdrop"></div>
+
+    <div class="confirm-modal-card">
+
+        <span
+            class="small-title"
+            id="subject-confirm-label"
+        >
+            CONFIRM
+        </span>
+
+        <h2 id="subject-confirm-title">
+            Are you sure?
+        </h2>
+
+        <p id="subject-confirm-message"></p>
+
+        <p
+            class="confirm-warning"
+            id="subject-confirm-warning"
+        ></p>
+
+        <div class="modal-actions">
+
+            <button
+                type="button"
+                class="modal-cancel"
+                id="subject-confirm-cancel"
+            >
+                Cancel
+            </button>
+
+            <button
+                type="button"
+                class="modal-save"
+                id="subject-confirm-action"
+            >
+                Confirm
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+    <!-- ========================================
+         JOURNAL DATA
+    ========================================= -->
+
+  <script src="data/journal.js"></script>
+<script src="data/storage.js"></script>
+<script src="script.js"></script>
+
+
+</body>
+
+</html>

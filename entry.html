@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    />
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    />
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    />
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=DM+Sans:wght@400;500;600&family=Fauna+One&display=swap"
+        rel="stylesheet"
+    />
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    />
+
+    <title>Entry | Academic Journal</title>
+</head>
+
+<body>
+
+    <main class="journal">
+
+        <a
+            href="#"
+            class="back-link"
+            id="entry-back-link"
+        >
+            ← Subject
+        </a>
+
+
+        <header class="entry-page-header">
+
+            <span
+                class="small-title"
+                id="entry-page-type"
+            >
+                ENTRY
+            </span>
+
+            <h1 id="entry-page-title">
+                Entry
+            </h1>
+
+            <p
+                class="subtitle"
+                id="entry-page-description"
+            ></p>
+
+            <p
+                class="little-note"
+                id="entry-page-note"
+            ></p>
+
+        </header>
+
+
+        <section class="entry-page-content">
+
+    <!-- ========================================
+         PAGE TOOLBAR
+    ========================================= -->
+
+    <div class="entry-toolbar">
+
+        <span class="small-title">
+            PAGE CONTENT
+        </span>
+
+        <button
+            type="button"
+            class="add-block-button"
+            id="add-block"
+        >
+            + Add Block
+        </button>
+
+    </div>
+
+
+    <!-- ========================================
+         BLOCKS
+    ========================================= -->
+
+    <div id="blocks-list"></div>
+
+
+    <!-- ========================================
+         EMPTY PAGE
+    ========================================= -->
+
+    <div
+        class="entry-page-empty"
+        id="entry-page-empty"
+    >
+
+        <span class="small-title">
+            EMPTY PAGE
+        </span>
+
+        <p>
+            This entry doesn't have any content yet.
+        </p>
+
+        <p class="little-note">
+            time to write something...
+        </p>
+
+    </div>
+
+</section>
+
+    </main>
+
+<!-- ========================================
+     BLOCK MODAL
+========================================= -->
+
+<div
+    class="block-modal"
+    id="block-modal"
+>
+
+    <div class="block-modal-backdrop"></div>
+
+    <div class="block-modal-card">
+
+        <button
+            type="button"
+            class="modal-close"
+            id="block-modal-close"
+            aria-label="Close"
+        >
+            ×
+        </button>
+
+        <span
+            class="small-title"
+            id="block-modal-label"
+        >
+            NEW BLOCK
+        </span>
+
+        <h2 id="block-modal-title">
+            Add Block
+        </h2>
+
+
+        <!-- BLOCK TYPE -->
+
+        <div
+            class="block-type-picker"
+            id="block-type-picker"
+        >
+
+            <button
+                type="button"
+                class="block-type-option"
+                data-block-type="heading"
+            >
+                <span class="block-type-icon">
+                    H
+                </span>
+
+                <span>
+                    Heading
+                </span>
+            </button>
+
+
+            <button
+                type="button"
+                class="block-type-option"
+                data-block-type="text"
+            >
+                <span class="block-type-icon">
+                    ¶
+                </span>
+
+                <span>
+                    Text
+                </span>
+            </button>
+
+        </div>
+
+
+        <!-- BLOCK FORM -->
+
+        <form
+            id="block-form"
+            class="block-form"
+        >
+
+            <div class="form-field">
+
+                <label for="block-content">
+                    Content
+                </label>
+
+                <textarea
+                    id="block-content"
+                    rows="7"
+                    placeholder="Write something..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="modal-cancel"
+                    id="block-modal-cancel"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="modal-save"
+                >
+                    Add Block
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- ========================================
+     BLOCK CONFIRMATION MODAL
+========================================= -->
+
+<div
+    class="confirm-modal"
+    id="block-confirm-modal"
+>
+
+    <div class="block-confirm-modal-backdrop"></div>
+
+    <div class="confirm-modal-card">
+
+        <span class="small-title">
+            DELETE BLOCK
+        </span>
+
+        <h2>
+            Are you sure?
+        </h2>
+
+        <p id="block-confirm-message">
+            Are you sure you want to delete this block?
+        </p>
+
+        <p class="confirm-warning">
+            This action cannot be undone.
+        </p>
+
+        <div class="modal-actions">
+
+            <button
+                type="button"
+                class="modal-cancel"
+                id="block-confirm-cancel"
+            >
+                Cancel
+            </button>
+
+            <button
+                type="button"
+                class="modal-save danger"
+                id="block-confirm-delete"
+            >
+                Yes, delete
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+    <script src="data/journal.js"></script>
+    <script src="data/storage.js"></script>
+    <script src="entry.js"></script>
+
+</body>
+
+</html>

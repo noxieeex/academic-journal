@@ -1,0 +1,15 @@
+# Windows
+desktop.ini
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.log
+
+# Environment / secrets
+.env
+.env.*
